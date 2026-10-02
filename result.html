@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ForgetGuard Result</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="result-container">
+
+    <h1>ForgetGuard</h1>
+
+    <p class="subtitle">
+        Your Forgetfulness Risk Analysis
+    </p>
+
+    <div class="risk-card">
+
+        <p class="result-label">
+            Forgetfulness Risk Score
+        </p>
+
+        <h2>{{ risk }}%</h2>
+
+        <h3>{{ level }}</h3>
+
+    </div>
+
+    <div class="risk-bar-container">
+
+        <div class="risk-bar"
+             data-risk="{{ risk }}">
+        </div>
+
+    </div>
+
+    <div class="task-info">
+
+        <p>
+            <strong>Task:</strong>
+            {{ task }}
+        </p>
+
+    </div>
+
+    <div class="deadline-info">
+
+        <p>
+            <strong>Deadline:</strong>
+            {{ deadline_status }}
+        </p>
+
+    </div>
+
+    <div class="reasons">
+
+        <h3>Why is this task at risk?</h3>
+
+        {% if reasons %}
+
+        <ul>
+
+            {% for reason in reasons %}
+
+            <li>{{ reason }}</li>
+
+            {% endfor %}
+
+        </ul>
+
+        {% else %}
+
+        <p>
+            No major risk factors were detected.
+        </p>
+
+        {% endif %}
+
+    </div>
+
+    <div class="recommendation">
+
+        <h3>ForgetGuard Recommendation</h3>
+
+        <p>
+            {{ recommendation }}
+        </p>
+
+    </div>
+
+    <div class="result-actions">
+
+        <a href="/"
+           class="back-button">
+            Analyze Another Task
+        </a>
+
+        <a href="/history"
+           class="history-button">
+            View Task History
+        </a>
+
+    </div>
+
+    <footer class="footer">
+
+        <p>ForgetGuard</p>
+
+        <span>
+            Smart task risk analysis project
+        </span>
+
+    </footer>
+
+</div>
+
+
+<script>
+
+    // -----------------------------
+    // RISK BAR
+    // -----------------------------
+
+    const riskBar =
+        document.querySelector(".risk-bar");
+
+    if (riskBar) {
+
+        riskBar.style.width =
+            riskBar.dataset.risk + "%";
+
+    }
+
+
+    // -----------------------------
+    // DEADLINE NOTIFICATION
+    // -----------------------------
+
+    const taskName = "{{ task }}";
+    const deadline = "{{ deadline }}";
+
+
+    function checkDeadline() {
+
+        const today = new Date();
+
+        const deadlineDate =
+            new Date(deadline + "T23:59:59");
+
+
+        const difference =
+            deadlineDate - today;
+
+
+        const daysLeft =
+            Math.ceil(
+                difference /
+                (1000 * 60 * 60 * 24)
+            );
+
+
+        // Today or tomorrow
+
+        if (daysLeft >= 0 && daysLeft <= 1) {
+
+            if (
+                "Notification" in window &&
+                Notification.permission === "granted"
+            ) {
+
+                new Notification(
+                    "🔔 ForgetGuard Alert",
+                    {
+                        body:
+                            "Your task '" +
+                            taskName +
+                            "' deadline is approaching."
+                    }
+                );
+
+                // Stop checking after notification
+                clearInterval(notificationTimer);
+            }
+
+        }
+
+    }
+
+
+    // -----------------------------
+    // REQUEST NOTIFICATION ACCESS
+    // -----------------------------
+
+    if ("Notification" in window) {
+
+        if (Notification.permission === "default") {
+
+            Notification.requestPermission()
+                .then(function(permission) {
+
+                    if (permission === "granted") {
+
+                        checkDeadline();
+
+                    }
+
+                });
+
+        }
+
+        else if (Notification.permission === "granted") {
+
+            checkDeadline();
+
+        }
+
+    }
+
+
+    // -----------------------------
+    // CHECK EVERY 10 SECONDS
+    // -----------------------------
+
+    const notificationTimer =
+        setInterval(
+            checkDeadline,
+            10000
+        );
+
+</script>
+
+
+</body>
+
+</html>

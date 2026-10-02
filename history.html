@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ForgetGuard History</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="result-container">
+
+    <h1>ForgetGuard</h1>
+    <p class="subtitle">Your Task Analysis History</p>
+
+    {% if tasks %}
+
+    <form method="POST"
+          action="/clear-history"
+          onsubmit="return confirm('Are you sure you want to clear all task history?');">
+
+        <button type="submit" class="clear-history-button">
+            Clear All History
+        </button>
+
+    </form>
+
+    {% for task in tasks|reverse %}
+
+    <div class="history-card">
+
+        <div class="history-header">
+            <h2>{{ task.task }}</h2>
+            <span>{{ task.risk }}% Risk</span>
+        </div>
+
+        <p><strong>Deadline:</strong> {{ task.deadline }}</p>
+
+        <p><strong>Importance:</strong> {{ task.importance }}</p>
+
+        <p>
+            <strong>Estimated Time:</strong>
+            {{ task.estimated_time }} hours
+        </p>
+
+        <p>
+            <strong>Times Postponed:</strong>
+            {{ task.postponed }}
+        </p>
+
+        <p>
+            <strong>Risk Level:</strong>
+            {{ task.level }}
+        </p>
+
+    </div>
+
+    {% endfor %}
+
+    {% else %}
+
+    <div class="empty-history">
+        <h3>No Task History</h3>
+        <p>No analyzed tasks are currently stored.</p>
+    </div>
+
+    {% endif %}
+
+    <div class="result-actions">
+
+        <a href="/" class="back-button">
+            Analyze New Task
+        </a>
+
+        <a href="/dashboard" class="history-button">
+            View Dashboard
+        </a>
+
+    </div>
+
+    <footer class="footer">
+        <p>ForgetGuard</p>
+        <span>Smart task risk analysis project</span>
+    </footer>
+
+</div>
+
+</body>
+</html>

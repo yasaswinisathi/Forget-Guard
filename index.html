@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>ForgetGuard</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+
+<body>
+
+    <div class="result-container">
+
+        <h1>ForgetGuard</h1>
+
+        <p class="subtitle">
+            Smart task analysis that identifies which tasks you are most likely to forget.
+            <br>
+            Turn your task details into a simple risk score and actionable recommendation.
+        </p>
+
+
+        <!-- Task Analysis Form -->
+
+        <form method="POST" action="/analyze">
+
+            <label>Task Name</label>
+
+            <br>
+
+            <input type="text"
+                   name="task"
+                   placeholder="Enter your task"
+                   required>
+
+            <br><br>
+
+
+            <label>Deadline</label>
+
+            <br>
+
+            <input type="date"
+                   name="deadline"
+                   required>
+
+            <br><br>
+
+
+            <label>Importance</label>
+
+            <br>
+
+            <select name="importance" required>
+
+                <option value="Low">
+                    Low
+                </option>
+
+                <option value="Medium">
+                    Medium
+                </option>
+
+                <option value="High">
+                    High
+                </option>
+
+            </select>
+
+            <br><br>
+
+
+            <label>Estimated Time (hours)</label>
+
+            <br>
+
+            <input type="number"
+                   name="estimated_time"
+                   placeholder="Example: 5"
+                   min="0"
+                   step="0.5"
+                   required>
+
+            <br><br>
+
+
+            <label>Times Postponed</label>
+
+            <br>
+
+            <input type="number"
+                   name="postponed"
+                   placeholder="Example: 3"
+                   min="0"
+                   step="1"
+                   required>
+
+            <br><br>
+
+
+            <button type="submit">
+                Check Forgetfulness Risk
+            </button>
+
+            <button type="reset"
+                    class="clear-button">
+                Clear Form
+            </button>
+
+        </form>
+
+
+        <!-- Navigation -->
+
+        <div class="result-actions">
+
+            <a href="/dashboard"
+               class="back-button">
+                View Dashboard
+            </a>
+
+            <a href="/history"
+               class="history-button">
+                View Task History
+            </a>
+
+        </div>
+
+
+        <!-- Risk Levels -->
+
+        <div class="risk-guide">
+
+            <h2>
+                Risk Levels
+            </h2>
+
+            <div class="risk-levels">
+
+                <div>
+
+                    <strong>
+                        0–39%
+                    </strong>
+
+                    <span>
+                        Low Risk
+                    </span>
+
+                </div>
+
+
+                <div>
+
+                    <strong>
+                        40–69%
+                    </strong>
+
+                    <span>
+                        Medium Risk
+                    </span>
+
+                </div>
+
+
+                <div>
+
+                    <strong>
+                        70–100%
+                    </strong>
+
+                    <span>
+                        High Risk
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- How it works -->
+
+        <div class="how-it-works">
+
+            <h2>
+                How ForgetGuard Works
+            </h2>
+
+            <div class="steps">
+
+                <div>
+
+                    <h3>
+                        01
+                    </h3>
+
+                    <p>
+                        Enter your task details.
+                    </p>
+
+                </div>
+
+
+                <div>
+
+                    <h3>
+                        02
+                    </h3>
+
+                    <p>
+                        ForgetGuard analyzes the risk factors.
+                    </p>
+
+                </div>
+
+
+                <div>
+
+                    <h3>
+                        03
+                    </h3>
+
+                    <p>
+                        Get your forgetfulness risk score.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Footer -->
+
+        <footer class="footer">
+
+            <p>
+                ForgetGuard
+            </p>
+
+            <span>
+                Smart task risk analysis project
+            </span>
+
+        </footer>
+
+    </div>
+
+</body>
+
+</html>

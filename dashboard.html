@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>ForgetGuard Dashboard</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<div class="result-container">
+
+    <h1>ForgetGuard</h1>
+
+    <p class="subtitle">
+        Your Smart Task Risk Dashboard
+    </p>
+
+
+    <!-- SUMMARY CARDS -->
+
+    <div class="dashboard-grid">
+
+        <div class="dashboard-card">
+
+            <span class="dashboard-label">
+                Total Tasks
+            </span>
+
+            <h2>
+                {{ total_tasks }}
+            </h2>
+
+        </div>
+
+
+        <div class="dashboard-card">
+
+            <span class="dashboard-label">
+                High Risk
+            </span>
+
+            <h2>
+                {{ high_risk }}
+            </h2>
+
+        </div>
+
+
+        <div class="dashboard-card">
+
+            <span class="dashboard-label">
+                Medium Risk
+            </span>
+
+            <h2>
+                {{ medium_risk }}
+            </h2>
+
+        </div>
+
+
+        <div class="dashboard-card">
+
+            <span class="dashboard-label">
+                Low Risk
+            </span>
+
+            <h2>
+                {{ low_risk }}
+            </h2>
+
+        </div>
+
+    </div>
+
+
+    <!-- AVERAGE RISK -->
+
+    <div class="average-risk">
+
+        <span>
+            Average Forgetfulness Risk
+        </span>
+
+        <strong>
+            {{ average_risk }}%
+        </strong>
+
+    </div>
+
+
+    <!-- PRIORITY ALERT -->
+
+    {% if priority_task %}
+
+    <div class="priority-alert">
+
+        <h3>
+            Priority Alert
+        </h3>
+
+        <p>
+            Your highest-risk task needs your attention first.
+        </p>
+
+        <strong>
+            {{ priority_task.task }}
+        </strong>
+
+        <p>
+            Risk Score:
+            <b>{{ priority_task.risk }}%</b>
+        </p>
+
+        <p>
+            Deadline:
+            {{ priority_task.deadline }}
+        </p>
+
+    </div>
+
+    {% endif %}
+
+
+    <!-- RISK DISTRIBUTION -->
+
+    <div class="recommendation">
+
+        <h3>
+            Risk Distribution
+        </h3>
+
+        {% if total_tasks > 0 %}
+
+        <p>
+            High Risk:
+            {{ high_risk }} tasks
+        </p>
+
+        <p>
+            Medium Risk:
+            {{ medium_risk }} tasks
+        </p>
+
+        <p>
+            Low Risk:
+            {{ low_risk }} tasks
+        </p>
+
+        {% else %}
+
+        <p>
+            No task data available yet.
+        </p>
+
+        {% endif %}
+
+    </div>
+
+
+    <!-- WHAT DOES THIS MEAN -->
+
+    <div class="recommendation">
+
+        <h3>
+            What does this mean?
+        </h3>
+
+
+        {% if total_tasks == 0 %}
+
+        <p>
+            You have not analyzed any tasks yet.
+            Add a task to start building your
+            ForgetGuard analysis.
+        </p>
+
+
+        {% elif average_risk >= 70 %}
+
+        <p>
+            Your average task risk is high.
+            Consider prioritizing your most urgent
+            tasks first.
+        </p>
+
+
+        {% elif average_risk >= 40 %}
+
+        <p>
+            Your tasks have a moderate level of risk.
+            Better scheduling can help reduce
+            postponement.
+        </p>
+
+
+        {% else %}
+
+        <p>
+            Your current tasks appear manageable.
+            Continue monitoring deadlines and
+            priorities.
+        </p>
+
+        {% endif %}
+
+    </div>
+
+
+    <!-- NAVIGATION -->
+
+    <div class="result-actions">
+
+        <a href="/" class="back-button">
+            Analyze New Task
+        </a>
+
+        <a href="/history" class="history-button">
+            View History
+        </a>
+
+    </div>
+
+
+    <!-- FOOTER -->
+
+    <footer class="footer">
+
+        <p>
+            ForgetGuard
+        </p>
+
+        <span>
+            Smart task risk analysis project
+        </span>
+
+    </footer>
+
+</div>
+
+</body>
+
+</html>

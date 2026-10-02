@@ -1,0 +1,595 @@
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f7fb;
+    margin: 0;
+    padding: 0;
+    color: #222;
+}
+
+
+/* Main container */
+
+.result-container {
+    width: 650px;
+    max-width: 90%;
+    margin: 50px auto;
+    background: white;
+    padding: 45px;
+    border-radius: 20px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+}
+
+
+/* Main heading */
+
+h1 {
+    font-size: 46px;
+    margin: 0;
+    letter-spacing: -1px;
+}
+
+.subtitle {
+    color: #666;
+    font-size: 18px;
+    line-height: 1.5;
+    margin-top: 12px;
+}
+
+
+/* Form */
+
+form {
+    margin-top: 30px;
+    text-align: left;
+}
+
+label {
+    font-weight: bold;
+    font-size: 16px;
+}
+
+input,
+select {
+    width: 100%;
+    padding: 14px;
+    margin-top: 8px;
+    margin-bottom: 5px;
+    border: 1px solid #d9dee7;
+    border-radius: 10px;
+    box-sizing: border-box;
+    font-size: 15px;
+    background: #fafbfc;
+    transition: 0.2s ease;
+}
+
+input:hover,
+select:hover {
+    border-color: #aaa;
+}
+
+input:focus,
+select:focus {
+    outline: none;
+    border-color: #555;
+    background: white;
+    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.05);
+}
+
+
+/* Main button */
+
+button {
+    width: 100%;
+    padding: 15px;
+    margin-top: 15px;
+    border: none;
+    border-radius: 10px;
+    background: #222;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+button:hover {
+    background: #444;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.12);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+
+/* Clear Form button */
+
+.clear-button {
+    background: #f1f3f6;
+    color: #444;
+    border: 1px solid #d9dee7;
+}
+
+.clear-button:hover {
+    background: #e5e7eb;
+    color: #222;
+    box-shadow: none;
+}
+
+
+/* History button */
+
+.history-button {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 12px 22px;
+    background: #555;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-size: 15px;
+    transition: 0.2s ease;
+}
+
+.history-button:hover {
+    background: #333;
+}
+
+
+/* Risk guide */
+
+.risk-guide {
+    margin-top: 35px;
+    padding-top: 28px;
+    border-top: 1px solid #ddd;
+}
+
+.risk-guide h2,
+.how-it-works h2 {
+    font-size: 25px;
+    margin-bottom: 22px;
+    letter-spacing: -0.3px;
+}
+
+
+/* Risk levels */
+
+.risk-levels {
+    display: flex;
+    gap: 12px;
+}
+
+.risk-levels div {
+    flex: 1;
+    padding: 18px 10px;
+    background: #f7f9fc;
+    border-radius: 10px;
+    text-align: center;
+    border: 1px solid #e5e7eb;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.risk-levels div:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.06);
+}
+
+.risk-levels strong {
+    display: block;
+    font-size: 16px;
+    margin-bottom: 6px;
+}
+
+.risk-levels span {
+    font-size: 14px;
+    color: #666;
+}
+
+
+/* How it works */
+
+.how-it-works {
+    margin-top: 45px;
+    padding-top: 28px;
+    border-top: 1px solid #ddd;
+}
+
+.steps {
+    display: flex;
+    gap: 15px;
+}
+
+.steps div {
+    flex: 1;
+    padding: 18px;
+    background: #f7f9fc;
+    border-radius: 12px;
+    text-align: center;
+    border: 1px solid #e5e7eb;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.steps div:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.06);
+}
+
+.steps h3 {
+    font-size: 24px;
+    margin: 0 0 8px;
+}
+
+.steps p {
+    font-size: 14px;
+    color: #666;
+    line-height: 1.5;
+}
+
+
+/* Risk result card */
+
+.risk-card {
+    margin: 30px 0;
+    padding: 30px 25px;
+    border-radius: 15px;
+    background: #fff3f3;
+    text-align: center;
+}
+
+.result-label {
+    margin: 0 0 10px;
+    color: #777;
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.risk-card h2 {
+    font-size: 55px;
+    margin: 0;
+}
+
+.risk-card h3 {
+    font-size: 22px;
+    margin-top: 8px;
+    color: #d32f2f;
+    letter-spacing: 1px;
+}
+
+
+/* Risk bar */
+
+.risk-bar-container {
+    width: 100%;
+    height: 12px;
+    background: #e5e7eb;
+    border-radius: 10px;
+    margin: -15px 0 25px;
+    overflow: hidden;
+}
+
+.risk-bar {
+    height: 100%;
+    width: 0;
+    background: #d32f2f;
+    border-radius: 10px;
+    transition: width 0.8s ease;
+}
+
+
+/* Task information */
+
+.task-info {
+    text-align: left;
+    background: #f7f9fc;
+    padding: 15px;
+    border-radius: 10px;
+}
+
+.task-info p {
+    margin: 0;
+}
+
+
+/* Deadline */
+
+.deadline-info {
+    text-align: left;
+    background: #f7f9fc;
+    padding: 15px;
+    border-radius: 10px;
+    margin-top: 12px;
+}
+
+.deadline-info p {
+    margin: 0;
+    font-size: 16px;
+}
+
+
+/* Reasons */
+
+.reasons {
+    text-align: left;
+    margin-top: 25px;
+}
+
+.reasons h3 {
+    font-size: 20px;
+}
+
+.reasons ul {
+    padding-left: 22px;
+}
+
+.reasons li {
+    margin: 12px 0;
+    line-height: 1.5;
+}
+
+
+/* Recommendation */
+
+.recommendation {
+    text-align: left;
+    margin-top: 25px;
+    padding: 20px;
+    background: #f7f9fc;
+    border-left: 4px solid #222;
+    border-radius: 10px;
+}
+
+.recommendation h3 {
+    margin-top: 0;
+    font-size: 18px;
+}
+
+.recommendation p {
+    margin-bottom: 0;
+    color: #555;
+    line-height: 1.6;
+}
+
+
+/* Result page actions */
+
+.result-actions {
+    display: flex;
+    gap: 12px;
+    margin-top: 10px;
+}
+
+.result-actions .back-button,
+.result-actions .history-button {
+    flex: 1;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+
+/* Back button */
+
+.back-button {
+    display: inline-block;
+    margin-top: 25px;
+    padding: 12px 22px;
+    background: #222;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: 0.2s ease;
+}
+
+.back-button:hover {
+    background: #444;
+}
+
+
+/* History cards */
+
+.history-card {
+    text-align: left;
+    background: #f7f9fc;
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 12px;
+    border: 1px solid #e5e7eb;
+}
+
+.history-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+}
+
+.history-header h2 {
+    margin: 0;
+    font-size: 21px;
+}
+
+.history-header span {
+    font-weight: bold;
+    font-size: 15px;
+    color: #d32f2f;
+}
+
+.history-card p {
+    margin: 10px 0;
+    color: #555;
+}
+
+
+/* Clear History Button */
+
+.clear-history-button {
+    width: 100%;
+    padding: 13px;
+    margin-top: 10px;
+    background: #fff1f1;
+    color: #c62828;
+    border: 1px solid #f0b8b8;
+    border-radius: 9px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.clear-history-button:hover {
+    background: #ffe2e2;
+    color: #a61b1b;
+    box-shadow: none;
+    transform: none;
+}
+
+
+/* Empty History */
+
+.empty-history {
+    margin-top: 30px;
+    padding: 30px;
+    background: #f7f9fc;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    text-align: center;
+}
+
+.empty-history h3 {
+    margin-top: 0;
+}
+
+.empty-history p {
+    color: #666;
+}
+
+
+/* Footer */
+
+.footer {
+    margin-top: 45px;
+    padding-top: 25px;
+    border-top: 1px solid #ddd;
+    text-align: center;
+}
+
+.footer p {
+    margin: 0;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.footer span {
+    display: block;
+    margin-top: 6px;
+    font-size: 13px;
+    color: #777;
+}
+
+
+/* Dashboard */
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+.dashboard-card {
+    padding: 25px;
+    background: #f7f9fc;
+    border: 1px solid #e5e7eb;
+    border-radius: 14px;
+    text-align: center;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.dashboard-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.07);
+}
+
+.dashboard-label {
+    display: block;
+    color: #666;
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.dashboard-card h2 {
+    margin: 0;
+    font-size: 35px;
+}
+
+
+/* Average risk */
+
+.average-risk {
+    margin-top: 20px;
+    padding: 25px;
+    background: #f7f9fc;
+    border: 1px solid #e5e7eb;
+    border-radius: 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.average-risk span {
+    font-weight: bold;
+    color: #555;
+}
+
+.average-risk strong {
+    font-size: 30px;
+}
+
+
+/* Mobile responsive */
+
+@media (max-width: 650px) {
+
+    .result-container {
+        width: auto;
+        margin: 20px;
+        padding: 25px;
+    }
+
+    h1 {
+        font-size: 36px;
+    }
+
+    .steps {
+        flex-direction: column;
+    }
+
+    .risk-levels {
+        flex-direction: column;
+    }
+
+    .history-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .risk-card h2 {
+        font-size: 45px;
+    }
+
+    .result-actions {
+        flex-direction: column;
+    }
+
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .average-risk {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+}
